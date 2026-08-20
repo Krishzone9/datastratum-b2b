@@ -67,3 +67,27 @@
   letter-spacing: 1px;
   margin-bottom: var(--space-xl);
 }
+
+@media (max-width: 600px) {
+  .final-cta {
+    padding: var(--space-3xl) 0;
+  }
+
+  .final-cta h2 {
+    font-size: var(--fs-2xl);
+  }
+
+  .final-cta p {
+    font-size: var(--fs-sm);
+  }
+
+  .final-cta-content > div {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .final-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

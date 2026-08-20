@@ -81,7 +81,24 @@
 }
 
 @media (max-width: 600px) {
+  .stats-bar {
+    padding: var(--space-xl) 0;
+  }
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .stat-card {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .stat-number {
+    font-size: var(--fs-xl);
+  }
+
+  .stat-label {
+    font-size: 11px;
   }
 }

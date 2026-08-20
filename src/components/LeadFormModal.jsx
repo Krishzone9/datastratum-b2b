@@ -32,6 +32,7 @@ export default function LeadFormModal({ isOpen, onClose }) {
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     fullName: '',
+    phone: '',
     company: '',
     email: '',
     vertical: '',
@@ -51,13 +52,18 @@ export default function LeadFormModal({ isOpen, onClose }) {
   const validate = () => {
     const newErrors = {};
     if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number with country code is required';
+    } else if (!/^\+?[0-9\s-]{7,18}$/.test(formData.phone.trim())) {
+      newErrors.phone = 'Please enter a valid phone number with country code (e.g. +91 97939 65272)';
+    }
     if (!formData.company.trim()) newErrors.company = 'Company name is required';
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
-    if (!formData.vertical) newErrors.vertical = 'Please select a vertical';
+    if (!formData.vertical) newErrors.vertical = 'Please select a vertical/category';
     return newErrors;
   };
 
@@ -80,9 +86,10 @@ export default function LeadFormModal({ isOpen, onClose }) {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          _subject: `⚡ New B2B Database Lead from ${formData.fullName} (${formData.company})`,
+          _subject: `⚡ New B2B Database Lead from ${formData.fullName} (${formData.phone})`,
           _template: 'table',
           'Full Name': formData.fullName,
+          'Phone Number (with Country Code)': formData.phone,
           'Company Name': formData.company,
           'Email Address': formData.email,
           'Selected B2B Category': formData.vertical,
@@ -102,7 +109,7 @@ export default function LeadFormModal({ isOpen, onClose }) {
   const handleClose = () => {
     setSubmitted(false);
     setIsSubmitting(false);
-    setFormData({ fullName: '', company: '', email: '', vertical: '', budget: '' });
+    setFormData({ fullName: '', phone: '', company: '', email: '', vertical: '', budget: '' });
     setErrors({});
     onClose();
   };
@@ -125,9 +132,9 @@ export default function LeadFormModal({ isOpen, onClose }) {
             </div>
             <h2>Request Submitted!</h2>
             <p>
-              Your plan request has been routed directly to our specialist at{' '}
+              Your plan request has been sent to our team at{' '}
               <strong style={{ color: 'var(--color-accent)' }}>krishnewgmail@gmail.com</strong>.
-              We will contact you within 24 hours.
+              We will contact you via WhatsApp / Call / Email within 24 hours.
             </p>
             <div className="modal-quick-actions">
               <a href="tel:+919793965272" className="btn btn-call-modal">
@@ -147,8 +154,8 @@ export default function LeadFormModal({ isOpen, onClose }) {
               <div className="modal-icon">
                 <FileText size={24} />
               </div>
-              <h2>Request Your Custom Plan</h2>
-              <p>Fill in your details to receive a custom plan directly from our team.</p>
+              <h2>Request Your Database Quote</h2>
+              <p>Fill in your contact details to receive verified sample counts and pricing.</p>
             </div>
 
             {/* Quick Contact Direct Options Bar */}
@@ -174,7 +181,7 @@ export default function LeadFormModal({ isOpen, onClose }) {
                   name="fullName"
                   type="text"
                   className={`form-input ${errors.fullName ? 'error' : ''}`}
-                  placeholder="John Doe"
+                  placeholder="e.g. Rahul Sharma"
                   value={formData.fullName}
                   onChange={handleChange}
                 />
@@ -182,19 +189,19 @@ export default function LeadFormModal({ isOpen, onClose }) {
               </div>
 
               <div className="form-group">
-                <label className="form-label" htmlFor="company">
-                  Company Name <span className="required">*</span>
+                <label className="form-label" htmlFor="phone">
+                  Phone Number (with Country Code) <span className="required">*</span>
                 </label>
                 <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  className={`form-input ${errors.company ? 'error' : ''}`}
-                  placeholder="Acme Corp"
-                  value={formData.company}
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  className={`form-input ${errors.phone ? 'error' : ''}`}
+                  placeholder="+91 97939 65272 (Enter with Country Code)"
+                  value={formData.phone}
                   onChange={handleChange}
                 />
-                {errors.company && <div className="form-error">{errors.company}</div>}
+                {errors.phone && <div className="form-error">{errors.phone}</div>}
               </div>
 
               <div className="form-group">
@@ -206,7 +213,7 @@ export default function LeadFormModal({ isOpen, onClose }) {
                   name="email"
                   type="email"
                   className={`form-input ${errors.email ? 'error' : ''}`}
-                  placeholder="john@acme.com"
+                  placeholder="name@company.com"
                   value={formData.email}
                   onChange={handleChange}
                 />
@@ -214,8 +221,24 @@ export default function LeadFormModal({ isOpen, onClose }) {
               </div>
 
               <div className="form-group">
+                <label className="form-label" htmlFor="company">
+                  Company / Business Name <span className="required">*</span>
+                </label>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  className={`form-input ${errors.company ? 'error' : ''}`}
+                  placeholder="e.g. Apex Industrial Supplies"
+                  value={formData.company}
+                  onChange={handleChange}
+                />
+                {errors.company && <div className="form-error">{errors.company}</div>}
+              </div>
+
+              <div className="form-group">
                 <label className="form-label" htmlFor="vertical">
-                  Campaign Goal / Vertical <span className="required">*</span>
+                  Target B2B Database Category <span className="required">*</span>
                 </label>
                 <select
                   id="vertical"
@@ -224,7 +247,7 @@ export default function LeadFormModal({ isOpen, onClose }) {
                   value={formData.vertical}
                   onChange={handleChange}
                 >
-                  <option value="">Select a vertical...</option>
+                  <option value="">Select a database category...</option>
                   {verticalOptions.map((v) => (
                     <option key={v} value={v}>{v}</option>
                   ))}
@@ -234,7 +257,7 @@ export default function LeadFormModal({ isOpen, onClose }) {
 
               <div className="form-group">
                 <label className="form-label" htmlFor="budget">
-                  Monthly Budget <span style={{ color: 'var(--color-text-dim)' }}>(optional)</span>
+                  Estimated Requirement / Budget <span style={{ color: 'var(--color-text-dim)' }}>(optional)</span>
                 </label>
                 <select
                   id="budget"
@@ -244,22 +267,22 @@ export default function LeadFormModal({ isOpen, onClose }) {
                   onChange={handleChange}
                 >
                   <option value="">Select budget range...</option>
-                  <option value="<5000">Under $5,000</option>
-                  <option value="5000-15000">$5,000 – $15,000</option>
-                  <option value="15000-50000">$15,000 – $50,000</option>
-                  <option value="50000-100000">$50,000 – $100,000</option>
-                  <option value="100000+">$100,000+</option>
+                  <option value="Single State/City Pack">Single State / City Pack</option>
+                  <option value="Single Trade / Industry Pack">Single Trade / Industry Pack</option>
+                  <option value="Exhibition Wise Data (+709)">Exhibitions Wise Data (+709)</option>
+                  <option value="All India B2B Database">All India B2B Database</option>
+                  <option value="International Buyers Pack">International Buyers Pack</option>
+                  <option value="Super Discount Combo Pack">Super Discount Combo Pack</option>
                 </select>
               </div>
 
               <button type="submit" className="btn btn-primary btn-lg form-submit" disabled={isSubmitting}>
                 <Send size={16} />
-                {isSubmitting ? 'Sending Request...' : 'Submit Request'}
+                {isSubmitting ? 'Sending Request...' : 'Submit Database Request'}
               </button>
 
               <p className="form-note">
-                Data will be routed to krishnewgmail@gmail.com. 
-                By submitting, you agree to our Privacy Policy.
+                Directly sent to krishnewgmail@gmail.com. We respect your privacy.
               </p>
             </form>
           </>

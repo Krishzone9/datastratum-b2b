@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Search, CheckCircle2, Database, Download } from 'lucide-react';
+import { Search, CheckCircle2, Database, Globe, ArrowRight, ShieldCheck } from 'lucide-react';
 import './DataExplorer.css';
 
 const sampleSegments = [
@@ -80,101 +80,155 @@ export default function DataExplorer({ onOpenForm }) {
               <Search className="search-icon" size={18} />
               <input
                 type="text"
-                placeholder="Search database category, exhibition, or city..."
+                placeholder="Search category, exhibition, or city..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
 
-            <select
-              className="filter-select"
-              value={selectedVertical}
-              onChange={(e) => setSelectedVertical(e.target.value)}
-            >
-              <option value="All">All Categories</option>
-              <option value="Exhibitions Data">Exhibitions Data (+709)</option>
-              <option value="Trades & Industry">Trades & Industry B2B</option>
-              <option value="City & State Wise">City & State Wise B2B</option>
-              <option value="International">International Importers</option>
-              <option value="Professionals">Professionals & Services</option>
-              <option value="Super Discount Combos">Super Discount Combos</option>
-            </select>
+            <div className="filter-group">
+              <select
+                className="filter-select"
+                value={selectedVertical}
+                onChange={(e) => setSelectedVertical(e.target.value)}
+                aria-label="Filter by Category"
+              >
+                <option value="All">All Categories</option>
+                <option value="Exhibitions Data">Exhibitions Data (+709)</option>
+                <option value="Trades & Industry">Trades & Industry B2B</option>
+                <option value="City & State Wise">City & State Wise B2B</option>
+                <option value="International">International Importers</option>
+                <option value="Professionals">Professionals & Services</option>
+                <option value="Super Discount Combos">Super Discount Combos</option>
+              </select>
 
-            <select
-              className="filter-select"
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-            >
-              <option value="All">All Types</option>
-              <option value="Exhibitors">Exhibitors Data</option>
-              <option value="Manufacturers">Manufacturers & B2B</option>
-              <option value="Regional">City / State Databases</option>
-              <option value="Importers">International Buyers</option>
-              <option value="Services">Services & Professionals</option>
-              <option value="Combo Pack">Super Combo Packs</option>
-            </select>
+              <select
+                className="filter-select"
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                aria-label="Filter by Type"
+              >
+                <option value="All">All Types</option>
+                <option value="Exhibitors">Exhibitors Data</option>
+                <option value="Manufacturers">Manufacturers & B2B</option>
+                <option value="Regional">City / State Databases</option>
+                <option value="Importers">International Buyers</option>
+                <option value="Services">Services & Professionals</option>
+                <option value="Combo Pack">Super Combo Packs</option>
+              </select>
+            </div>
           </div>
 
-          <div className="table-responsive">
-            <table className="explorer-table">
-              <thead>
-                <tr>
-                  <th>Database Code & Name</th>
-                  <th>Category</th>
-                  <th>Type</th>
-                  <th>Verified Contact Count</th>
-                  <th>Accuracy</th>
-                  <th>Geographic Coverage</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.length > 0 ? (
-                  filteredData.map((item) => (
-                    <tr key={item.id}>
-                      <td>
-                        <div className="segment-name">
-                          <Database size={15} style={{ color: 'var(--color-accent)' }} />
-                          <div>
-                            <span style={{ fontSize: '11px', color: 'var(--color-text-dim)', display: 'block' }}>{item.id}</span>
-                            {item.name}
+          {/* Desktop Table View (Laptops & Desktops) */}
+          <div className="desktop-table-view">
+            <div className="table-responsive">
+              <table className="explorer-table">
+                <thead>
+                  <tr>
+                    <th>Database Code & Name</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Verified Contacts</th>
+                    <th>Accuracy</th>
+                    <th>Coverage</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredData.length > 0 ? (
+                    filteredData.map((item) => (
+                      <tr key={item.id}>
+                        <td>
+                          <div className="segment-name">
+                            <Database size={15} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
+                            <div>
+                              <span style={{ fontSize: '11px', color: 'var(--color-text-dim)', display: 'block' }}>{item.id}</span>
+                              {item.name}
+                            </div>
                           </div>
-                        </div>
-                      </td>
-                      <td><span style={{ fontWeight: 600, color: 'var(--color-text)' }}>{item.vertical}</span></td>
-                      <td>
-                        <span className={`badge-tag ${item.category === 'Exhibitors' ? 'badge-b2b' : item.category === 'Importers' ? 'badge-intent' : 'badge-b2c'}`}>
-                          {item.category}
-                        </span>
-                      </td>
-                      <td style={{ fontWeight: 700, color: 'var(--color-white)' }}>{item.reach}</td>
-                      <td>
-                        <span className="accuracy-pill">
-                          <CheckCircle2 size={13} /> {item.accuracy}
-                        </span>
-                      </td>
-                      <td style={{ color: 'var(--color-text-muted)' }}>{item.country}</td>
-                      <td>
-                        <button className="btn btn-primary table-btn btn-with-tooltip" onClick={onOpenForm}>
-                          <span className="btn-tooltip">Get Instant Pricing</span>
-                          Order Pack
-                        </button>
+                        </td>
+                        <td><span style={{ fontWeight: 600, color: 'var(--color-text)' }}>{item.vertical}</span></td>
+                        <td>
+                          <span className={`badge-tag ${item.category === 'Exhibitors' ? 'badge-b2b' : item.category === 'Importers' ? 'badge-intent' : 'badge-b2c'}`}>
+                            {item.category}
+                          </span>
+                        </td>
+                        <td style={{ fontWeight: 700, color: 'var(--color-white)', whiteSpace: 'nowrap' }}>{item.reach}</td>
+                        <td>
+                          <span className="accuracy-pill">
+                            <CheckCircle2 size={13} /> {item.accuracy}
+                          </span>
+                        </td>
+                        <td style={{ color: 'var(--color-text-muted)', whiteSpace: 'nowrap' }}>{item.country}</td>
+                        <td>
+                          <button className="btn btn-primary table-btn btn-with-tooltip" onClick={onOpenForm}>
+                            <span className="btn-tooltip">Get Instant Pricing</span>
+                            Order Pack
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="7" className="no-results">
+                        No matching database found. <button onClick={() => { setSearchTerm(''); setSelectedVertical('All'); setSelectedCategory('All'); }} style={{ color: 'var(--color-accent)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>Reset filters</button> or <span style={{ color: 'var(--color-accent)', cursor: 'pointer' }} onClick={onOpenForm}>request custom dataset quote</span>.
                       </td>
                     </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7" className="no-results">
-                      No matching database found. <button onClick={() => { setSearchTerm(''); setSelectedVertical('All'); setSelectedCategory('All'); }} style={{ color: 'var(--color-accent)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>Reset filters</button> or <span style={{ color: 'var(--color-accent)', cursor: 'pointer' }} onClick={onOpenForm}>request custom dataset quote</span>.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <div style={{ marginTop: 'var(--space-lg)', textAlign: 'right', fontSize: 'var(--fs-xs)', color: 'var(--color-text-muted)' }}>
-            Showing top B2B database inventory. Over 1,000+ custom exhibition lists & trade databases available in Excel format.
+          {/* Mobile Cards View (Phones & Tablets) */}
+          <div className="mobile-cards-view">
+            {filteredData.length > 0 ? (
+              filteredData.map((item) => (
+                <div key={item.id} className="mobile-catalog-card">
+                  <div className="mobile-card-top">
+                    <div className="mobile-code-badge">{item.id}</div>
+                    <span className={`badge-tag ${item.category === 'Exhibitors' ? 'badge-b2b' : item.category === 'Importers' ? 'badge-intent' : 'badge-b2c'}`}>
+                      {item.category}
+                    </span>
+                  </div>
+
+                  <h3 className="mobile-card-title">{item.name}</h3>
+
+                  <div className="mobile-card-details">
+                    <div className="mobile-detail-item">
+                      <span className="detail-label">Contacts</span>
+                      <span className="detail-value highlight">{item.reach}</span>
+                    </div>
+                    <div className="mobile-detail-item">
+                      <span className="detail-label">Accuracy</span>
+                      <span className="accuracy-pill">
+                        <CheckCircle2 size={13} /> {item.accuracy}
+                      </span>
+                    </div>
+                    <div className="mobile-detail-item">
+                      <span className="detail-label">Coverage</span>
+                      <span className="detail-value">{item.country}</span>
+                    </div>
+                  </div>
+
+                  <button className="btn btn-primary btn-block mobile-order-btn" onClick={onOpenForm}>
+                    <span>Request Database Quote</span>
+                    <ArrowRight size={15} />
+                  </button>
+                </div>
+              ))
+            ) : (
+              <div className="no-results-mobile">
+                <p>No matching database found.</p>
+                <button className="btn btn-secondary btn-sm" onClick={() => { setSearchTerm(''); setSelectedVertical('All'); setSelectedCategory('All'); }}>
+                  Reset Filters
+                </button>
+              </div>
+            )}
+          </div>
+
+          <div className="catalog-footer-note">
+            <span>⚡ Human Verified | Excel Format | 75-80% Lead Accuracy Guarantee</span>
           </div>
         </div>
       </div>

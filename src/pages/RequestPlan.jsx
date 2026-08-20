@@ -31,7 +31,7 @@ export default function RequestPlan() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
-    fullName: '', company: '', email: '', vertical: '', budget: '', message: '',
+    fullName: '', phone: '', company: '', email: '', vertical: '', budget: '', message: '',
   });
 
   const handleChange = (e) => {
@@ -43,6 +43,11 @@ export default function RequestPlan() {
   const validate = () => {
     const newErrors = {};
     if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number with country code is required';
+    } else if (!/^\+?[0-9\s-]{7,18}$/.test(formData.phone.trim())) {
+      newErrors.phone = 'Please enter a valid phone number with country code (e.g. +91 97939 65272)';
+    }
     if (!formData.company.trim()) newErrors.company = 'Company name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Please enter a valid email';
@@ -61,9 +66,10 @@ export default function RequestPlan() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _subject: `⚡ New B2B Database Lead from ${formData.fullName} (${formData.company})`,
+          _subject: `⚡ New B2B Database Lead from ${formData.fullName} (${formData.phone})`,
           _template: 'table',
           'Full Name': formData.fullName,
+          'Phone Number (with Country Code)': formData.phone,
           'Company Name': formData.company,
           'Email Address': formData.email,
           'Selected B2B Category': formData.vertical,
@@ -97,7 +103,7 @@ export default function RequestPlan() {
             </div>
             <h2 style={{ fontSize: 'var(--fs-xl)', marginBottom: 'var(--space-md)', color: 'var(--color-success)' }}>Thank You!</h2>
             <p style={{ color: 'var(--color-text-muted)', lineHeight: 'var(--lh-relaxed)', marginBottom: 'var(--space-xl)' }}>
-              Your audience targeting request has been sent to <strong style={{ color: 'var(--color-accent)' }}>krishnewgmail@gmail.com</strong>. Our team will deliver a customized plan within 24 hours.
+              Your database quote request has been sent to <strong style={{ color: 'var(--color-accent)' }}>krishnewgmail@gmail.com</strong>. Our team will contact you via Phone/WhatsApp within 24 hours.
             </p>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 'var(--space-xl)', flexWrap: 'wrap' }}>
               <a href="tel:+919793965272" className="btn btn-call-modal">
@@ -118,8 +124,8 @@ export default function RequestPlan() {
               }}>
                 <FileText size={24} />
               </div>
-              <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--space-sm)' }}>Request Your Audience Plan</h1>
-              <p style={{ color: 'var(--color-text-muted)', fontSize: 'var(--fs-base)' }}>Tell us about your campaign and we'll create a custom targeting strategy.</p>
+              <h1 style={{ fontSize: 'var(--fs-2xl)', fontWeight: 800, marginBottom: 'var(--space-sm)' }}>Request Database Plan & Pricing</h1>
+              <p style={{ color: 'var(--color-text-muted)', fontSize: 'var(--fs-base)' }}>Get customized count, sample columns, and quotation delivered directly.</p>
 
               <div className="modal-direct-bar" style={{ marginTop: 'var(--space-lg)' }}>
                 <span>Prefer direct contact?</span>
@@ -137,24 +143,30 @@ export default function RequestPlan() {
             <form onSubmit={handleSubmit} noValidate>
               <div className="form-group">
                 <label className="form-label" htmlFor="rp-fullName">Full Name <span className="required">*</span></label>
-                <input id="rp-fullName" name="fullName" type="text" className={`form-input ${errors.fullName ? 'error' : ''}`} placeholder="John Doe" value={formData.fullName} onChange={handleChange} />
+                <input id="rp-fullName" name="fullName" type="text" className={`form-input ${errors.fullName ? 'error' : ''}`} placeholder="Rahul Sharma" value={formData.fullName} onChange={handleChange} />
                 {errors.fullName && <div className="form-error">{errors.fullName}</div>}
               </div>
 
               <div className="form-group">
-                <label className="form-label" htmlFor="rp-company">Company Name <span className="required">*</span></label>
-                <input id="rp-company" name="company" type="text" className={`form-input ${errors.company ? 'error' : ''}`} placeholder="Acme Corp" value={formData.company} onChange={handleChange} />
-                {errors.company && <div className="form-error">{errors.company}</div>}
+                <label className="form-label" htmlFor="rp-phone">Phone Number (with Country Code) <span className="required">*</span></label>
+                <input id="rp-phone" name="phone" type="tel" className={`form-input ${errors.phone ? 'error' : ''}`} placeholder="+91 97939 65272 (Enter with Country Code)" value={formData.phone} onChange={handleChange} />
+                {errors.phone && <div className="form-error">{errors.phone}</div>}
               </div>
 
               <div className="form-group">
                 <label className="form-label" htmlFor="rp-email">Email Address <span className="required">*</span></label>
-                <input id="rp-email" name="email" type="email" className={`form-input ${errors.email ? 'error' : ''}`} placeholder="john@acme.com" value={formData.email} onChange={handleChange} />
+                <input id="rp-email" name="email" type="email" className={`form-input ${errors.email ? 'error' : ''}`} placeholder="rahul@company.com" value={formData.email} onChange={handleChange} />
                 {errors.email && <div className="form-error">{errors.email}</div>}
               </div>
 
               <div className="form-group">
-                <label className="form-label" htmlFor="rp-vertical">Campaign Goal / Vertical <span className="required">*</span></label>
+                <label className="form-label" htmlFor="rp-company">Company / Business Name <span className="required">*</span></label>
+                <input id="rp-company" name="company" type="text" className={`form-input ${errors.company ? 'error' : ''}`} placeholder="Apex Corp" value={formData.company} onChange={handleChange} />
+                {errors.company && <div className="form-error">{errors.company}</div>}
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="rp-vertical">Database Category <span className="required">*</span></label>
                 <select id="rp-vertical" name="vertical" className={`form-select ${errors.vertical ? 'error' : ''}`} value={formData.vertical} onChange={handleChange}>
                   <option value="">Select a vertical...</option>
                   {verticalOptions.map((v) => <option key={v} value={v}>{v}</option>)}
@@ -163,26 +175,27 @@ export default function RequestPlan() {
               </div>
 
               <div className="form-group">
-                <label className="form-label" htmlFor="rp-budget">Monthly Budget <span style={{ color: 'var(--color-text-dim)' }}>(optional)</span></label>
+                <label className="form-label" htmlFor="rp-budget">Package Preference <span style={{ color: 'var(--color-text-dim)' }}>(optional)</span></label>
                 <select id="rp-budget" name="budget" className="form-select" value={formData.budget} onChange={handleChange}>
-                  <option value="">Select budget range...</option>
-                  <option value="<5000">Under $5,000</option>
-                  <option value="5000-15000">$5,000 – $15,000</option>
-                  <option value="15000-50000">$15,000 – $50,000</option>
-                  <option value="50000-100000">$50,000 – $100,000</option>
-                  <option value="100000+">$100,000+</option>
+                  <option value="">Select package...</option>
+                  <option value="Single State/City Pack">Single State / City Pack</option>
+                  <option value="Single Trade / Industry Pack">Single Trade / Industry Pack</option>
+                  <option value="Exhibition Wise Data (+709)">Exhibition Wise Data (+709)</option>
+                  <option value="All India B2B Database">All India B2B Database</option>
+                  <option value="International Buyers Pack">International Buyers Pack</option>
+                  <option value="Super Discount Combo Pack">Super Discount Combo Pack</option>
                 </select>
               </div>
 
               <div className="form-group">
-                <label className="form-label" htmlFor="rp-message">Additional Details <span style={{ color: 'var(--color-text-dim)' }}>(optional)</span></label>
-                <textarea id="rp-message" name="message" className="form-input" rows="4" placeholder="Tell us about your campaign goals, target audience, or any specific requirements..." value={formData.message} onChange={handleChange} style={{ resize: 'vertical' }} />
+                <label className="form-label" htmlFor="rp-message">Additional Requirements / Query <span style={{ color: 'var(--color-text-dim)' }}>(optional)</span></label>
+                <textarea id="rp-message" name="message" className="form-input" rows="3" placeholder="Tell us specific cities, states, trades or requirements..." value={formData.message} onChange={handleChange} style={{ resize: 'vertical' }} />
               </div>
 
               <button type="submit" className="btn btn-primary btn-lg form-submit" disabled={isSubmitting}>
-                <Send size={16} /> {isSubmitting ? 'Sending...' : 'Submit Request'}
+                <Send size={16} /> {isSubmitting ? 'Sending Request...' : 'Submit Database Request'}
               </button>
-              <p className="form-note">Data will be routed to krishnewgmail@gmail.com. By submitting, you agree to our Privacy Policy.</p>
+              <p className="form-note">Data will be routed to krishnewgmail@gmail.com. We respect your privacy.</p>
             </form>
           </div>
         )}
