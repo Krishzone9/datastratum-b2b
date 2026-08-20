@@ -74,7 +74,7 @@ export default function DataExplorer({ onOpenForm }) {
           </p>
         </div>
 
-        <div className="explorer-card animate-on-scroll">
+        <div className="explorer-card">
           <div className="explorer-controls">
             <div className="search-box">
               <Search className="search-icon" size={18} />

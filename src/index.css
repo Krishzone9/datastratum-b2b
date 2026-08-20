@@ -485,16 +485,23 @@ ul, ol {
   100% { stroke-dashoffset: 0; }
 }
 
-/* Scroll-triggered animation classes */
+/* Scroll-triggered animation classes - safe default for all devices */
 .animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 1;
+  transform: none;
 }
 
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
+@media (min-width: 769px) {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Stagger delays */
