@@ -1,0 +1,90 @@
+/* ---- Data Desk CTA ---- */
+.data-desk {
+  position: relative;
+  padding: var(--space-4xl) 0;
+  overflow: hidden;
+}
+
+.data-desk::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 107, 44, 0.05) 0%, transparent 50%, rgba(255, 107, 44, 0.03) 100%);
+}
+
+.data-desk-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: var(--space-3xl) var(--space-2xl);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.data-desk-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 2px;
+  background: var(--gradient-accent);
+}
+
+.data-desk-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-xl);
+  background: rgba(255, 107, 44, 0.1);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}
+
+.data-desk h2 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+  margin-bottom: var(--space-md);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.data-desk p {
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2xl);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.data-desk .btn {
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative dots pattern */
+.data-desk-dots {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  opacity: 0.05;
+  background-image: radial-gradient(circle, var(--color-white) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+.data-desk-dots.left {
+  top: 20%;
+  left: 5%;
+}
+
+.data-desk-dots.right {
+  bottom: 20%;
+  right: 5%;
+}
