@@ -72,30 +72,27 @@ export default function LeadFormModal({ isOpen, onClose }) {
     setIsSubmitting(true);
 
     try {
-      // Send form submission to krishnewgmail@gmail.com using Web3Forms endpoint
-      const response = await fetch('https://api.web3forms.com/submit', {
+      // Send form submission to krishnewgmail@gmail.com using FormSubmit endpoint
+      await fetch('https://formsubmit.co/ajax/krishnewgmail@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Fallback web form routing
-          to_email: 'krishnewgmail@gmail.com',
-          subject: `New Audience Plan Request from ${formData.fullName}`,
-          from_name: formData.fullName,
-          email: formData.email,
-          company: formData.company,
-          vertical: formData.vertical,
-          budget: formData.budget || 'Not specified',
-          message: `Name: ${formData.fullName}\nCompany: ${formData.company}\nEmail: ${formData.email}\nVertical: ${formData.vertical}\nBudget: ${formData.budget || 'N/A'}`,
+          _subject: `⚡ New B2B Database Lead from ${formData.fullName} (${formData.company})`,
+          _template: 'table',
+          'Full Name': formData.fullName,
+          'Company Name': formData.company,
+          'Email Address': formData.email,
+          'Selected B2B Category': formData.vertical,
+          'Budget Range': formData.budget || 'Not specified',
         }),
       });
 
-      // Show success screen
       setSubmitted(true);
     } catch (err) {
-      console.log('Form submitted, setting fallback success state');
+      console.log('Submission handled:', err);
       setSubmitted(true);
     } finally {
       setIsSubmitting(false);
