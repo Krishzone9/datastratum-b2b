@@ -1,0 +1,100 @@
+/* ===================================================
+   NotFound – 404 Error Page Styles
+   Matches the dark navy + orange accent design system
+   =================================================== */
+
+.not-found {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  background: var(--gradient-hero);
+  position: relative;
+  overflow: hidden;
+}
+
+.not-found::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 44, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.not-found-content {
+  max-width: 560px;
+  position: relative;
+  z-index: 1;
+}
+
+.not-found-code {
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  font-weight: var(--fw-black);
+  line-height: 1;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-md);
+  letter-spacing: -4px;
+}
+
+.not-found h1 {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-extrabold);
+  margin-bottom: var(--space-lg);
+  background: linear-gradient(135deg, var(--color-white), var(--color-text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.not-found p {
+  font-size: var(--fs-lg);
+  color: var(--color-text-muted);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-2xl);
+}
+
+.not-found-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.not-found-links {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.not-found-links p {
+  font-size: var(--fs-sm);
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-sm);
+}
+
+.not-found-links a {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin: 0 var(--space-sm);
+  transition: color var(--transition-fast);
+}
+
+.not-found-links a:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 480px) {
+  .not-found-code {
+    font-size: 5rem;
+  }
+}

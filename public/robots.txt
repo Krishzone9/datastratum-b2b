@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://datastratum-b2b.pages.dev/sitemap.xml
+
+# Agent-readable site overview
+# https://llmstxt.org
+LLMs-Txt: https://datastratum-b2b.pages.dev/llms.txt

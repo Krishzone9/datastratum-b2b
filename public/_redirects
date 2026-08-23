@@ -1,1 +1,5 @@
-/* /index.html 200
+# SPA routes are handled by functions/_middleware.js
+# Only list known SPA routes here (not a catch-all)
+/request-plan /index.html 200
+/privacy-policy /index.html 200
+/opt-out /index.html 200

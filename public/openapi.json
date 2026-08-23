@@ -1,0 +1,158 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Datastratum B2B Database API",
+    "version": "1.0.0",
+    "description": "Programmatic access to Datastratum's verified B2B company database catalog and lead submission. All database products are delivered as clean Microsoft Excel (.xlsx) files with 75–80 % verified accuracy.",
+    "contact": {
+      "name": "Datastratum Support",
+      "email": "krishnewgmail@gmail.com",
+      "url": "https://datastratum-b2b.pages.dev"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://datastratum-b2b.pages.dev",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/api/catalog": {
+      "get": {
+        "operationId": "listCatalog",
+        "summary": "List database catalog",
+        "description": "Returns all available B2B database segments. Supports optional filtering by vertical, category, or free-text search.",
+        "parameters": [
+          {
+            "name": "vertical",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Filter by vertical, e.g. 'Exhibitions Data', 'Trades & Industry', 'City & State Wise', 'International', 'Professionals', 'Super Discount Combos'."
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Filter by category type, e.g. 'Exhibitors', 'Manufacturers', 'B2B', 'Regional', 'Importers', 'Services', 'Combo Pack'."
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Free-text search across database name, ID, and country fields."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of matching database segments.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": { "type": "integer", "description": "Number of matching segments." },
+                    "segments": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Segment" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/leads": {
+      "post": {
+        "operationId": "submitLead",
+        "summary": "Submit a database plan enquiry",
+        "description": "Submit a lead form to request pricing and details on specific database packages. The Datastratum team will respond within 24 hours via phone or email.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LeadRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Lead submitted successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "message": { "type": "string", "example": "Your enquiry has been received. Our team will contact you within 24 hours." },
+                    "leadId": { "type": "string", "description": "Unique lead reference ID." }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+              }
+            }
+          },
+          "405": {
+            "description": "Method not allowed.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Segment": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "EXH-101" },
+          "name": { "type": "string", "example": "2,11,500 Exhibitors Data From 709 Exhibitions (2016-2026)" },
+          "vertical": { "type": "string", "example": "Exhibitions Data" },
+          "category": { "type": "string", "example": "Exhibitors" },
+          "reach": { "type": "string", "example": "2,11,500+" },
+          "accuracy": { "type": "string", "example": "80%" },
+          "country": { "type": "string", "example": "All India" }
+        }
+      },
+      "LeadRequest": {
+        "type": "object",
+        "required": ["name", "phone"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "description": "Contact person name." },
+          "email": { "type": "string", "format": "email", "description": "Business email address." },
+          "phone": { "type": "string", "minLength": 10, "description": "Phone number with country code." },
+          "company": { "type": "string", "description": "Company or firm name." },
+          "message": { "type": "string", "description": "Details about which database packages you are interested in." }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": { "type": "string", "example": "VALIDATION_ERROR" },
+              "message": { "type": "string", "example": "The 'name' field is required." },
+              "resolution": { "type": "string", "example": "Provide a JSON body with at least 'name' and 'phone' fields. See /openapi.json for the full schema." }
+            }
+          }
+        }
+      }
+    }
+  }
+}

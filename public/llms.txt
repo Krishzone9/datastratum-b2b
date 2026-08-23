@@ -1,0 +1,45 @@
+# Datastratum
+
+> Datastratum is India's leading B2B database provider. We offer human-verified company contact lists, exhibition exhibitor data, trade-wise databases, city/state directories, and international buyer contacts in Excel format with 75–80 % lead accuracy.
+
+## Products & Services
+
+- **Exhibition Exhibitor Databases**: Verified exhibitor contact lists from 709+ major national & international trade shows (2016–2026) across machinery, auto, solar, food, medical, packaging, and building sectors.
+- **Trade & Industry B2B Databases**: All-India company databases categorised by trade — electrical, machinery, food processing, medical, construction, plastics, and 80+ other verticals.
+- **City & State Wise Databases**: Granular B2B company contact lists for Delhi NCR, Mumbai, Pune, Gujarat, Bangalore, Kolkata, Chennai, Hyderabad, and all Indian states.
+- **International Buyers & Importers**: Verified importers, buyers, exporters, and sellers data from 165+ countries including USA, UK, Gulf/UAE, Europe, Australia, and China.
+- **Super Discount Combo Packs**: Bundled packages (Top 40, Top 80, 21 State Wise, 14 International) at heavily discounted rates.
+
+## Data Format
+
+All databases are delivered in clean Microsoft Excel (.xlsx) format containing: Company/Firm Name, Phone Numbers, Mobile Numbers, Email IDs, Full Address, City, State, Pincode, and Product/Service details.
+
+## Key Stats
+
+- 709+ exhibitions covered
+- 130,000+ trusted business clients
+- 165+ countries of international importers
+- 75–80 % verified lead accuracy
+- 80+ trade & industry categories
+- 100 % clean Excel format delivery
+
+## API
+
+- [OpenAPI specification](/openapi.json): Programmatic access to the database catalog and lead submission.
+- `GET /api/catalog` — browse available database segments (supports `?vertical=`, `?category=`, `?search=` query filters).
+- `POST /api/leads` — submit a database plan enquiry with JSON body `{ name, email, phone, company, message }`.
+
+## Contact
+
+- Phone: +91 97939 65272
+- WhatsApp: https://wa.me/919793965272
+- Email: krishnewgmail@gmail.com
+
+## Links
+
+- [Homepage](https://datastratum-b2b.pages.dev/)
+- [B2B Database Catalog](https://datastratum-b2b.pages.dev/#explorer)
+- [Request a Database Plan](https://datastratum-b2b.pages.dev/request-plan)
+- [Privacy Policy](https://datastratum-b2b.pages.dev/privacy-policy)
+- [Opt-Out / Do Not Sell](https://datastratum-b2b.pages.dev/opt-out)
+- [Sitemap](https://datastratum-b2b.pages.dev/sitemap.xml)

@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import RequestPlan from './pages/RequestPlan';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import OptOut from './pages/OptOut';
+import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -39,6 +40,7 @@ function AppContent() {
         <Route path="/request-plan" element={<RequestPlan />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/opt-out" element={<OptOut />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <FloatingWidgets onOpenForm={() => setFormOpen(true)} />
