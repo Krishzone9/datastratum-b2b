@@ -32,15 +32,15 @@ export default function Navbar({ onOpenForm }) {
         <div className="container">
           <div className="top-bar-info">
             <span><ShieldCheck size={14} style={{ color: 'var(--color-accent)' }} /> #1 Verified B2B & Exhibitor Database Provider</span>
-            <a href="mailto:krishnewgmail@gmail.com" className="top-bar-link">
-              <Mail size={13} /> krishnewgmail@gmail.com
+            <a href="mailto:datastratum.business@gmail.com" className="top-bar-link">
+              <Mail size={13} /> datastratum.business@gmail.com
             </a>
           </div>
           <div className="top-bar-info">
-            <a href="tel:+919793965272" className="top-bar-link" title="Click to call directly">
-              <Phone size={13} /> +91 97939 65272
+            <a href="tel:+918983288354" className="top-bar-link" title="Click to call directly">
+              <Phone size={13} /> +91 89832 88354
             </a>
-            <a href="https://wa.me/919793965272" target="_blank" rel="noopener noreferrer" className="top-bar-wa-link">
+            <a href="https://wa.me/918983288354" target="_blank" rel="noopener noreferrer" className="top-bar-wa-link">
               <MessageCircle size={13} /> Chat on WhatsApp
             </a>
           </div>
@@ -92,10 +92,10 @@ export default function Navbar({ onOpenForm }) {
         <a href="#value-props" onClick={(e) => { e.preventDefault(); scrollToSection('value-props'); }}>Why Choose Us</a>
         <a href="#faq" onClick={(e) => { e.preventDefault(); scrollToSection('faq'); }}>FAQs</a>
         <div className="mobile-contact-actions">
-          <a href="tel:+919793965272" className="mobile-call-btn">
-            <Phone size={16} /> Call +91 97939 65272
+          <a href="tel:+918983288354" className="mobile-call-btn">
+            <Phone size={16} /> Call +91 89832 88354
           </a>
-          <a href="https://wa.me/919793965272" target="_blank" rel="noopener noreferrer" className="mobile-wa-btn">
+          <a href="https://wa.me/918983288354" target="_blank" rel="noopener noreferrer" className="mobile-wa-btn">
             <MessageCircle size={16} /> WhatsApp Us
           </a>
         </div>

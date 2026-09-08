@@ -132,9 +132,9 @@ function getPrerenderedHomepage() {
 
     <h2>Contact</h2>
     <p>
-      Phone: <a href="tel:+919793965272">+91 97939 65272</a><br>
-      WhatsApp: <a href="https://wa.me/919793965272">Chat on WhatsApp</a><br>
-      Email: <a href="mailto:krishnewgmail@gmail.com">krishnewgmail@gmail.com</a>
+      Phone: <a href="tel:+918983288354">+91 89832 88354</a><br>
+      WhatsApp: <a href="https://wa.me/918983288354">Chat on WhatsApp</a><br>
+      Email: <a href="mailto:datastratum.business@gmail.com">datastratum.business@gmail.com</a>
     </p>
 
     <p style="font-size:0.875rem;margin-top:32px">
@@ -174,9 +174,9 @@ Access 709+ exhibition lists, All-India trade-wise B2B databases, city & state-w
 
 ## Contact
 
-- Phone: [+91 97939 65272](tel:+919793965272)
-- WhatsApp: [Chat on WhatsApp](https://wa.me/919793965272)
-- Email: [krishnewgmail@gmail.com](mailto:krishnewgmail@gmail.com)
+- Phone: [+91 89832 88354](tel:+918983288354)
+- WhatsApp: [Chat on WhatsApp](https://wa.me/918983288354)
+- Email: [datastratum.business@gmail.com](mailto:datastratum.business@gmail.com)
 
 ## Links
 

@@ -24,18 +24,18 @@ export default function Footer() {
             <h4>Direct Contact</h4>
             <ul className="footer-contact-list">
               <li>
-                <a href="tel:+919793965272" className="footer-contact-link">
-                  <Phone size={15} style={{ color: 'var(--color-accent)' }} /> +91 97939 65272
+                <a href="tel:+918983288354" className="footer-contact-link">
+                  <Phone size={15} style={{ color: 'var(--color-accent)' }} /> +91 89832 88354
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/919793965272" target="_blank" rel="noopener noreferrer" className="footer-contact-link wa-link">
+                <a href="https://wa.me/918983288354" target="_blank" rel="noopener noreferrer" className="footer-contact-link wa-link">
                   <MessageCircle size={15} style={{ color: '#25D366' }} /> WhatsApp Chat
                 </a>
               </li>
               <li>
-                <a href="mailto:krishnewgmail@gmail.com" className="footer-contact-link">
-                  <Mail size={15} style={{ color: 'var(--color-accent)' }} /> krishnewgmail@gmail.com
+                <a href="mailto:datastratum.business@gmail.com" className="footer-contact-link">
+                  <Mail size={15} style={{ color: 'var(--color-accent)' }} /> datastratum.business@gmail.com
                 </a>
               </li>
             </ul>
@@ -64,9 +64,9 @@ export default function Footer() {
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Datastratum. All rights reserved.</p>
           <div className="footer-socials">
-            <a href="tel:+919793965272" aria-label="Direct Phone Call" title="Call +91 97939 65272"><Phone size={16} /></a>
-            <a href="https://wa.me/919793965272" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp Chat"><MessageCircle size={16} /></a>
-            <a href="mailto:krishnewgmail@gmail.com" aria-label="Email" title="Email Us"><Mail size={16} /></a>
+            <a href="tel:+918983288354" aria-label="Direct Phone Call" title="Call +91 89832 88354"><Phone size={16} /></a>
+            <a href="https://wa.me/918983288354" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp Chat"><MessageCircle size={16} /></a>
+            <a href="mailto:datastratum.business@gmail.com" aria-label="Email" title="Email Us"><Mail size={16} /></a>
             <a href="#" aria-label="LinkedIn"><ExternalLink size={16} /></a>
           </div>
         </div>

@@ -32,8 +32,8 @@ export default function OptOut() {
             <h2 style={{ fontSize: 'var(--fs-xl)', color: 'var(--color-white)', margin: 'var(--space-2xl) 0 var(--space-md)' }}>How to Opt Out</h2>
             <p style={{ marginBottom: 'var(--space-md)' }}>You can exercise your opt-out rights in the following ways:</p>
             <ul style={{ paddingLeft: 'var(--space-xl)', marginBottom: 'var(--space-lg)', listStyle: 'disc' }}>
-              <li style={{ marginBottom: 'var(--space-sm)' }}>Email us at: <a href="mailto:krishnewgmail@gmail.com" style={{ color: 'var(--color-accent)' }}>krishnewgmail@gmail.com</a></li>
-              <li style={{ marginBottom: 'var(--space-sm)' }}>Call us directly at: <a href="tel:+919793965272" style={{ color: 'var(--color-accent)' }}>+91 97939 65272</a></li>
+              <li style={{ marginBottom: 'var(--space-sm)' }}>Email us at: <a href="mailto:datastratum.business@gmail.com" style={{ color: 'var(--color-accent)' }}>datastratum.business@gmail.com</a></li>
+              <li style={{ marginBottom: 'var(--space-sm)' }}>Call us directly at: <a href="tel:+918983288354" style={{ color: 'var(--color-accent)' }}>+91 89832 88354</a></li>
               <li style={{ marginBottom: 'var(--space-sm)' }}>Use the Global Privacy Control (GPC) signal in your browser</li>
             </ul>
 

@@ -33,7 +33,7 @@ export async function onRequestPost({ request }) {
   if (!body.phone || typeof body.phone !== 'string' || body.phone.trim().length < 10) {
     return jsonError(400, 'VALIDATION_ERROR',
       "The 'phone' field is required and must be at least 10 characters.",
-      "Provide a phone number with country code, e.g. '+919793965272'. See /openapi.json for the full schema.");
+      "Provide a phone number with country code, e.g. '+918983288354'. See /openapi.json for the full schema.");
   }
 
   // Validate optional email format if provided

@@ -47,12 +47,12 @@ export default function PrivacyPolicy() {
 
             <h2 style={{ fontSize: 'var(--fs-xl)', color: 'var(--color-white)', margin: 'var(--space-2xl) 0 var(--space-md)' }}>5. Your Rights</h2>
             <p style={{ marginBottom: 'var(--space-md)' }}>
-              Under GDPR, CCPA, and other applicable laws, you have the right to access, correct, delete, or port your personal data. To exercise these rights, please contact us at krishnewgmail@gmail.com.
+              Under GDPR, CCPA, and other applicable laws, you have the right to access, correct, delete, or port your personal data. To exercise these rights, please contact us at datastratum.business@gmail.com.
             </p>
 
             <h2 style={{ fontSize: 'var(--fs-xl)', color: 'var(--color-white)', margin: 'var(--space-2xl) 0 var(--space-md)' }}>6. Contact Us</h2>
             <p>
-              If you have questions about this Privacy Policy, please contact us at: <a href="mailto:krishnewgmail@gmail.com" style={{ color: 'var(--color-accent)' }}>krishnewgmail@gmail.com</a> or call us at <a href="tel:+919793965272" style={{ color: 'var(--color-accent)' }}>+91 97939 65272</a>.
+              If you have questions about this Privacy Policy, please contact us at: <a href="mailto:datastratum.business@gmail.com" style={{ color: 'var(--color-accent)' }}>datastratum.business@gmail.com</a> or call us at <a href="tel:+918983288354" style={{ color: 'var(--color-accent)' }}>+91 89832 88354</a>.
             </p>
           </div>
         </div>

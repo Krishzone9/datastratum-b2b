@@ -20,10 +20,10 @@ export default function FinalCTA({ onOpenForm }) {
               Request Database Plan
               <ArrowRight size={18} />
             </button>
-            <a href="tel:+919793965272" className="btn btn-secondary btn-lg" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <Phone size={18} /> Call +91 97939 65272
+            <a href="tel:+918983288354" className="btn btn-secondary btn-lg" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <Phone size={18} /> Call +91 89832 88354
             </a>
-            <a href="https://wa.me/919793965272" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(37, 211, 102, 0.15)', borderColor: 'rgba(37, 211, 102, 0.3)', color: '#25D366' }}>
+            <a href="https://wa.me/918983288354" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(37, 211, 102, 0.15)', borderColor: 'rgba(37, 211, 102, 0.3)', color: '#25D366' }}>
               <MessageCircle size={18} /> WhatsApp Chat
             </a>
           </div>

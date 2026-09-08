@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: 'How do I place an order or get custom pricing?',
-    a: 'Simply click "Request Database Plan", call us directly at +91 97939 65272, or chat with us instantly on WhatsApp (+91 97939 65272). Our team will share exact counts and pricing.',
+    a: 'Simply click "Request Database Plan", call us directly at +91 89832 88354, or chat with us instantly on WhatsApp (+91 89832 88354). Our team will share exact counts and pricing.',
   },
 ];
 

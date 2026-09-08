@@ -46,7 +46,7 @@ export default function RequestPlan() {
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number with country code is required';
     } else if (!/^\+?[0-9\s-]{7,18}$/.test(formData.phone.trim())) {
-      newErrors.phone = 'Please enter a valid phone number with country code (e.g. +91 97939 65272)';
+      newErrors.phone = 'Please enter a valid phone number with country code (e.g. +91 89832 88354)';
     }
     if (!formData.company.trim()) newErrors.company = 'Company name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
@@ -62,7 +62,7 @@ export default function RequestPlan() {
 
     setIsSubmitting(true);
     try {
-      await fetch('https://formsubmit.co/ajax/krishnewgmail@gmail.com', {
+      await fetch('https://formsubmit.co/ajax/datastratum.business@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
@@ -103,13 +103,13 @@ export default function RequestPlan() {
             </div>
             <h2 style={{ fontSize: 'var(--fs-xl)', marginBottom: 'var(--space-md)', color: 'var(--color-success)' }}>Thank You!</h2>
             <p style={{ color: 'var(--color-text-muted)', lineHeight: 'var(--lh-relaxed)', marginBottom: 'var(--space-xl)' }}>
-              Your database quote request has been sent to <strong style={{ color: 'var(--color-accent)' }}>krishnewgmail@gmail.com</strong>. Our team will contact you via Phone/WhatsApp within 24 hours.
+              Your database quote request has been sent to <strong style={{ color: 'var(--color-accent)' }}>datastratum.business@gmail.com</strong>. Our team will contact you via Phone/WhatsApp within 24 hours.
             </p>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 'var(--space-xl)', flexWrap: 'wrap' }}>
-              <a href="tel:+919793965272" className="btn btn-call-modal">
-                <Phone size={16} /> Call +91 97939 65272
+              <a href="tel:+918983288354" className="btn btn-call-modal">
+                <Phone size={16} /> Call +91 89832 88354
               </a>
-              <a href="https://wa.me/919793965272" target="_blank" rel="noopener noreferrer" className="btn btn-wa-modal">
+              <a href="https://wa.me/918983288354" target="_blank" rel="noopener noreferrer" className="btn btn-wa-modal">
                 <MessageCircle size={16} /> WhatsApp Chat
               </a>
             </div>
@@ -130,10 +130,10 @@ export default function RequestPlan() {
               <div className="modal-direct-bar" style={{ marginTop: 'var(--space-lg)' }}>
                 <span>Prefer direct contact?</span>
                 <div className="direct-buttons">
-                  <a href="tel:+919793965272" className="direct-link direct-call" title="Call directly">
-                    <Phone size={14} /> Call +91 97939 65272
+                  <a href="tel:+918983288354" className="direct-link direct-call" title="Call directly">
+                    <Phone size={14} /> Call +91 89832 88354
                   </a>
-                  <a href="https://wa.me/919793965272" target="_blank" rel="noopener noreferrer" className="direct-link direct-wa" title="WhatsApp Chat">
+                  <a href="https://wa.me/918983288354" target="_blank" rel="noopener noreferrer" className="direct-link direct-wa" title="WhatsApp Chat">
                     <MessageCircle size={14} /> WhatsApp
                   </a>
                 </div>
@@ -149,7 +149,7 @@ export default function RequestPlan() {
 
               <div className="form-group">
                 <label className="form-label" htmlFor="rp-phone">Phone Number (with Country Code) <span className="required">*</span></label>
-                <input id="rp-phone" name="phone" type="tel" className={`form-input ${errors.phone ? 'error' : ''}`} placeholder="+91 97939 65272 (Enter with Country Code)" value={formData.phone} onChange={handleChange} />
+                <input id="rp-phone" name="phone" type="tel" className={`form-input ${errors.phone ? 'error' : ''}`} placeholder="+91 89832 88354 (Enter with Country Code)" value={formData.phone} onChange={handleChange} />
                 {errors.phone && <div className="form-error">{errors.phone}</div>}
               </div>
 
@@ -195,7 +195,7 @@ export default function RequestPlan() {
               <button type="submit" className="btn btn-primary btn-lg form-submit" disabled={isSubmitting}>
                 <Send size={16} /> {isSubmitting ? 'Sending Request...' : 'Submit Database Request'}
               </button>
-              <p className="form-note">Data will be routed to krishnewgmail@gmail.com. We respect your privacy.</p>
+              <p className="form-note">Data will be routed to datastratum.business@gmail.com. We respect your privacy.</p>
             </form>
           </div>
         )}
